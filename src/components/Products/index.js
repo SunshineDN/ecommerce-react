@@ -19,7 +19,8 @@ function Products({onAddProductToCart}) {
     useEffect(() => {
         productAPI.get("/products")
             .then(res => res.data)
-            .then(data => {
+            .then(prod => {
+                const data = prod.products;
                 data.map(product => {
                     product.price = product.price * usd;
                     product.quantity = 1;
@@ -54,7 +55,7 @@ function Products({onAddProductToCart}) {
             :
             products.map(product => (
                 <ProductCard key={product.id}>
-                    <ProductImg src={product.image} alt={product.title} />
+                    <ProductImg src={product.images[0]} alt={product.title} />
                     <ProductInfo>
                         <ProductTitle>{product.title}</ProductTitle>
                         <ProductDesc>{product.description}</ProductDesc>

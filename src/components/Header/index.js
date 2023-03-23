@@ -101,7 +101,7 @@ function Header({ cartList, removeProductFromCart, clearCart, addQuantity, subtr
                     ) : (
                         cart.map(product => (
                             <CartItem key={product.id}>
-                                <CartItemImg src={product.image} />
+                                <CartItemImg src={product.images[0]} />
                                 <CartItemInfo>
                                     <CartItemName>{product.title}</CartItemName>
                                     <CartItemPrice>R$ {product.price.toFixed(2).split(".").join(",")}</CartItemPrice>
