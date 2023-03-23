@@ -3,6 +3,8 @@ import { SearchAlt } from "@styled-icons/boxicons-regular/SearchAlt"
 import { Cart } from '@styled-icons/boxicons-solid/Cart';
 import { CloseCircleOutline } from "@styled-icons/evaicons-outline/CloseCircleOutline";
 import { ArrowBackOutline } from "@styled-icons/evaicons-outline/ArrowBackOutline";
+import { AddCircle } from "@styled-icons/ionicons-solid/AddCircle";
+import { RemoveCircle } from "@styled-icons/ionicons-solid/RemoveCircle";
 
 export const HeaderContainer = styled.header`
     position: fixed;
@@ -11,6 +13,7 @@ export const HeaderContainer = styled.header`
     width: 100%;
     height: 90px;
     background-color: #101317;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -53,10 +56,10 @@ export const SearchInput = styled.input`
         width: 400px;
     }
 
-  &::placeholder {
-    color: #fff;
-    opacity: 0.5;
-  }
+    &::placeholder {
+        color: #fff;
+        opacity: 0.5;
+    }
 `;
 
 export const SearchIcon = styled(SearchAlt)`
@@ -116,6 +119,7 @@ export const NavItemLink = styled.a`
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    border-radius: 5px;
 `;
 
 export const CartIcon = styled(Cart)`
@@ -197,6 +201,7 @@ export const CartBarCheckout = styled.button`
     color: #fff;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    border-radius: 5px;
     &:hover{
         background-color: #323842;
     }
@@ -236,7 +241,9 @@ export const CartItemInfo = styled.div`
 
 export const CartItemName = styled.h2`
     font-size: 1.2em;
+    width: 200px;
     font-weight: 600;
+    opacity: 0.8;
 `;
 
 export const CartItemPrice = styled.h2`
@@ -258,22 +265,32 @@ export const CartItemQuantity = styled.div`
     width: 100px;
 `;
 
-export const CartItemQuantityBtn = styled.button`
-    font-size: 1.2em;
-    font-weight: 600;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    background-color: #101317;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    &:hover{
-        background-color: #323842;
-    }
+// export const CartItemQuantityBtn = styled.button`
+//     font-size: 1.2em;
+//     font-weight: 600;
+//     padding: 5px 10px;
+//     border: none;
+//     outline: none;
+//     background-color: #101317;
+//     color: #fff;
+//     cursor: pointer;
+//     transition: all 0.2s ease-in-out;
+//     &:hover{
+//         background-color: #323842;
+//     }
+// `;
+
+export const CartItemAddQuantityBtn = styled(AddCircle)`
+    margin-right: 10px;
+`;
+
+export const CartItemRemoveQuantityBtn = styled(RemoveCircle)`
+    margin-left: 10px;
 `;
 
 export const CartItemQuantityCount = styled.span`
     font-size: 1.2em;
+    text-align: center;
+    width: 100%;
     font-weight: 600;
 `;

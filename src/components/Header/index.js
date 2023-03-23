@@ -28,31 +28,41 @@ import { CartCount,
     CartItemName,
     CartItemPrice,
     CartItemQuantity,
-    CartItemQuantityBtn,
-    CartItemQuantityCount } from "./styles"
+    // CartItemQuantityBtn,
+    CartItemQuantityCount, 
+    CartItemAddQuantityBtn,
+    CartItemRemoveQuantityBtn} from "./styles"
 import logo from "../../assets/logo.png"
 import { useEffect, useState } from "react";
 
-function Header({ cartList, removeProductFromCart, clearCart}) {
+function Header({ cartList, removeProductFromCart, clearCart, addQuantity, subtractQuantity}) {
     const [cart, setCart] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const total = (
         cart.reduce((count, product) => {
-            return count += product.price;
+            return count += (product.price * product.quantity);
         }, 0)
-    )
+    );
 
     useEffect(() => {
         setCart(cartList);
-    }, [cartList])
+    }, [cartList]);
 
     function handleRemoveProductFromCart(productId) {
         removeProductFromCart(productId);
-    }
+    };
 
     function handleClearCart() {
         clearCart();
-    }
+    };
+
+    function handleSubtractQuantity(productId) {
+        subtractQuantity(productId);
+    };
+
+    function handleAddQuantity(productId) {
+        addQuantity(productId);
+    };
 
     return(
         <HeaderContainer>
@@ -73,7 +83,7 @@ function Header({ cartList, removeProductFromCart, clearCart}) {
                             <NavItemLink to="/register">Cadastrar</NavItemLink>
                         </NavItem>
                         <NavItem>
-                            <NavItemLink style={{position: "relative"}} onClick={e => setIsOpen(true)} ><CartIcon/><CartCount>{cart.length}</CartCount> </NavItemLink>
+                            <NavItemLink style={{position: "relative"}} onClick={e => setIsOpen(true)} ><CartIcon/><CartCount>{cart.reduce((count, product) => {return count += product.quantity}, 0) }</CartCount> </NavItemLink>
                         </NavItem>
                     </NavList>
                 </Nav>
@@ -93,12 +103,12 @@ function Header({ cartList, removeProductFromCart, clearCart}) {
                             <CartItem key={product.id}>
                                 <CartItemImg src={product.image} />
                                 <CartItemInfo>
-                                    <CartItemName>{product.name}</CartItemName>
-                                    <CartItemPrice>R$ {product.price}</CartItemPrice>
+                                    <CartItemName>{product.title}</CartItemName>
+                                    <CartItemPrice>R$ {product.price.toFixed(2).split(".").join(",")}</CartItemPrice>
                                     <CartItemQuantity>
-                                        <CartItemQuantityBtn>-</CartItemQuantityBtn>
-                                        <CartItemQuantityCount>1</CartItemQuantityCount>
-                                        <CartItemQuantityBtn>+</CartItemQuantityBtn>
+                                        <CartItemRemoveQuantityBtn onClick={e => handleSubtractQuantity(product.id)} />
+                                        <CartItemQuantityCount>{product.quantity}</CartItemQuantityCount>
+                                        <CartItemAddQuantityBtn onClick={e => handleAddQuantity(product.id)} />
                                     </CartItemQuantity>
                                 </CartItemInfo>
                                 <CartItemDelete onClick={e => handleRemoveProductFromCart(product.id)} />
@@ -107,7 +117,7 @@ function Header({ cartList, removeProductFromCart, clearCart}) {
                     )}
                 </CartBarBody>
                 <CartBarFooter>
-                    <CartBarTotal>Total: R$ {total.toFixed(2)}</CartBarTotal>
+                    <CartBarTotal>Total: R$ {total.toFixed(2).split(".").join(",")}</CartBarTotal>
                     <CartBarCheckout>Finalizar compra</CartBarCheckout>
                     {cart.length > 0 && <CartBarCheckout onClick={e => handleClearCart()}>Limpar</CartBarCheckout>}
                 </CartBarFooter>

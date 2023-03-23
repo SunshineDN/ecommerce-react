@@ -59,7 +59,6 @@ export const ProductPrice = styled.p`
 export const ProductButton = styled.button`
     width: 100%;
     height: 40px;
-    background-color: #101317;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -67,17 +66,14 @@ export const ProductButton = styled.button`
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-
-    &:hover {
-        background-color: #f2f2f2;
-        color: #101317;
-    }
 `;
 
 export const ProductButtonLink = styled.a`
     width: 100%;
     height: 40px;
-    background-color: #101317;
+    background: rgb(247,167,80);
+    background: linear-gradient(145deg, rgba(247,167,80,1) 0%, rgba(51,15,228,1) 100%);
+    background-size: 150%;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -91,8 +87,7 @@ export const ProductButtonLink = styled.a`
     justify-content: center;
 
     &:hover {
-        background-color: #f2f2f2;
-        color: #101317;
+        background-position: center right;
     }
 `;
 
