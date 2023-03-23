@@ -43,6 +43,7 @@ export const Logo = styled.img`
 
 export const SearchInput = styled.input`
     font-size: 1em;
+    font-weight: 400;
     width: 300px;
     height: 50px;
     border-radius: 7px;
@@ -60,6 +61,19 @@ export const SearchInput = styled.input`
         color: #fff;
         opacity: 0.5;
     }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 480px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 320px) {
+        width: 100%;
+    }
+
 `;
 
 export const SearchIcon = styled(SearchAlt)`
@@ -282,10 +296,20 @@ export const CartItemQuantity = styled.div`
 
 export const CartItemAddQuantityBtn = styled(AddCircle)`
     margin-right: 10px;
+    color: #101317;
+    cursor: pointer;
+    &:hover{
+        color: #323842;
+    }
 `;
 
 export const CartItemRemoveQuantityBtn = styled(RemoveCircle)`
     margin-left: 10px;
+    color: #101317;
+    cursor: pointer;
+    &:hover{
+        color: #323842;
+    }
 `;
 
 export const CartItemQuantityCount = styled.span`

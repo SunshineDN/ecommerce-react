@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import ProductsPage from "./pages/ProductsPage";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(
+    window.localStorage.getItem('cart') ? JSON.parse(window.localStorage.getItem('cart')) : []
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   function handleAddQuantity(productId) {
     const newCart = cart.map(product => {

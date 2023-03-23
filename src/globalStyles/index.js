@@ -7,6 +7,9 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         font-family: sans-serif;
     }
+    html {
+        background-color: #323842;
+    }
 `;
 
 export default GlobalStyles;

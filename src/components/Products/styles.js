@@ -34,7 +34,7 @@ export const ProductInfo = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 `;
 
 export const ProductTitle = styled.h2`
@@ -53,7 +53,7 @@ export const ProductDesc = styled.p`
 export const ProductPrice = styled.p`
     font-size: 1.2em;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 10px
 `;
 
 export const ProductButton = styled.button`
@@ -61,11 +61,19 @@ export const ProductButton = styled.button`
     height: 40px;
     color: #fff;
     border: none;
+    background-color: transparent;
     border-radius: 5px;
     font-size: 1.2em;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-position: center right;
+    }
+    &:active {
+        transform: scale(0.99);
+    }
 `;
 
 export const ProductButtonLink = styled.a`
@@ -89,6 +97,9 @@ export const ProductButtonLink = styled.a`
     &:hover {
         background-position: center right;
     }
+    &:active {
+        transform: scale(0.95);
+    }
 `;
 
 export const ProductButtonLinkIcon = styled(Cart)`
@@ -106,4 +117,11 @@ export const ProductButtonLinkTextCart = styled.span`
     font-size: 1.2em;
     font-weight: 600;
     margin-left: 10px;
+`;
+
+export const Loading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
 `;
